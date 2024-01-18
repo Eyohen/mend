@@ -71,7 +71,7 @@ const AdminNav = () => {
        {open ?  (<div class="block absolute min-w-[300px] bg-white mt-[150px] right-[1px] p-4 shadow-md z-30 text-center">
             <div>
                 <p className='font-bold w-full'>{data.firstName}</p>
-                <p onClick={logOut} className='mt-2'>Log Out</p>
+                <p onClick={logOut} className='mt-2 cursor-pointer'>Log Out</p>
             </div> 
   </div>) : (null)}
 
