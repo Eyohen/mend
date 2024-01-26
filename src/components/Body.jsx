@@ -233,7 +233,7 @@ const Body = () => {
 
 
         
-<div className=" flex md:gap-x-12">
+<div className=" flex md:gap-x-12 flex-col gap-y-6">
             <div className='bg-white p-2'>
             <p className='font-bold text-lg'>Receipts Sent</p>
             <div class="max-h-60 overflow-y-auto">

@@ -71,6 +71,11 @@ const AdminNav = () => {
        {open ?  (<div class="block absolute min-w-[300px] bg-white mt-[150px] right-[1px] p-4 shadow-md z-30 text-center">
             <div>
                 <p className='font-bold w-full'>{data.firstName}</p>
+                <Link to={'/dashboard'}><p className='hover:bg-gray-300 rounded-md px-12 py-1 text-lg'>Dashboard</p></Link>
+        <Link to={'/employee'}><p className='hover:bg-gray-300 rounded-md px-12 py-1 text-lg'>Employees</p></Link>
+        <Link to={'/receipt'}><p className='hover:bg-gray-300 rounded-md px-12 py-1 text-lg'>Receipts</p></Link>
+
+        <Link to={'/task'}><p className='hover:bg-gray-300 rounded-md px-12 py-1 text-lg'>Tasks</p></Link>
                 <p onClick={logOut} className='mt-2 cursor-pointer'>Log Out</p>
             </div> 
   </div>) : (null)}
