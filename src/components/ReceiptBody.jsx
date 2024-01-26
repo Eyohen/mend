@@ -31,7 +31,8 @@ const ReceiptBody = () => {
   const [customer,setCustomer]=useState("")
   const [price,setPrice]=useState("")
   const [date, setDate] = useState(new Date())
-  const [information,setInformation]=useState("")
+  const [sewing,setSewing]=useState("")
+  const [alteration,setAlteration]=useState("")
   const [advanced,setAdvanced]=useState("")
   const [startDate, setStartDate] = useState(new Date());
     const [selectedMedium, setSelectedMedium] = useState([])
@@ -59,7 +60,7 @@ const ReceiptBody = () => {
           }
 
           const res = await axios.post(URL+"/api/receipts/send",{email,
-            date:startDate,medium:selectedMedium, customer, price,information, advanced
+            date:startDate,medium:selectedMedium, customer, price,sewing,alteration, advanced
           
           
           }, {
@@ -99,7 +100,8 @@ const ReceiptBody = () => {
               <option key={item._id} value={item.medium}>{item.medium}</option>
             ) )}
           </select>
-          <input onChange={(e)=>setInformation(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="Describe the work done" />
+          <input onChange={(e)=>setSewing(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="sewing ?..." />
+          <input onChange={(e)=>setAlteration(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="alterations ? ..." />
           <input onChange={(e)=>setAdvanced(e.target.value)} className="border border-black px-2 py-1" placeholder="Enter advanced paid" />
          
           <p className='text-md text-gray-600'>Enter Date of Payment: <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className='border border-black py-1 ' placeholder='Enter Due Date' /></p>
