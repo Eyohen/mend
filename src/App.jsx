@@ -7,6 +7,9 @@ import Employee from './pages/Employee'
 import Task from './pages/Task'
 import Login from './pages/Login'
 import Email from './pages/Email'
+import EditTask from './components/EditTask'
+import EditEmployee from './components/EditEmployee'
+import EditTransaction from './components/EditTransaction'
 
 const App = () => {
   return (
@@ -17,6 +20,10 @@ const App = () => {
         <Route exact path="/receipt" element={<Receipt/>}/>
         <Route exact path="/employee" element={<Employee/>}/>
         <Route exact path="/task" element={<Task/>}/>
+        <Route exact path="/edittask/:id" element={<EditTask/>}/>
+        <Route exact path="/editemployee/:id" element={<EditEmployee/>}/>
+        <Route exact path="/edittransaction/:id" element={<EditTransaction/>}/>
+
         <Route exact path="/email" element={<Email/>}/>
    </Routes>
   )

@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 import { URL, IF } from '../url'
 import { SlTrash } from "react-icons/sl";
+import { SlPencil } from "react-icons/sl";
+import { Link } from 'react-router-dom';
 
 
 
@@ -225,17 +227,17 @@ const Body = () => {
   return (
     <div className="p-16 bg-gray-200">
 
-        <div className='flex gap-x-6 md:flex-row flex-col gap-y-6'>
+        {/* <div className='flex gap-x-6 md:flex-row flex-col gap-y-6'> */}
 
 
 
 
         
-<div className=" flex ">
+<div className=" flex md:gap-x-12">
             <div className='bg-white p-2'>
             <p className='font-bold text-lg'>Receipts Sent</p>
             <div class="max-h-60 overflow-y-auto">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5 table-auto">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr >
           <th scope="col" class="px-6 py-3 font-light ">
@@ -285,81 +287,14 @@ const Body = () => {
       </table>
       </div>
       </div>
-        </div> 
-
-
-        <div className="items-center  flex ">
-            <div className='bg-white p-2'>
-            <p className='font-bold text-lg'>Scehduled Transactions</p>
-            <div class="max-h-60 overflow-y-auto">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr >
-          <th scope="col" class="px-6 py-3 font-light ">
-              id
-            </th>
-            <th scope="col" class="px-6 py-3 font-light">
-              name
-            </th>
-            <th scope="col" class="px-6 py-3 font-light">
-              amount
-            </th>
-            <th scope="col" class="px-6 py-3 font-light">
-              status
-            </th>
        
-            <th scope="col" class="px-6 py-3 font-light">
-              date
-            </th>
-            <th scope="col" class="px-6 py-3 font-light">
-              delete
-            </th>
-           
-          
-          
-           
-          </tr>
-        </thead>
-        <tbody>
-     
-            {transactions.map((user, index) => (
-              <tr
-                class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-200"
-                key={user.id}
-              >
-                 <td class="px-6 py-2">{index + 1}</td>
-    
-                <td class="px-6 py-2">{user.name}</td>
-                <td class="px-6 py-2">{user.amount}</td>    
-                <td class="px-6 py-4">
-                {user.status == "pending" ?  ( <p className='bg-yellow-400 px-1 rounded-full text-white flex justify-center animate-pulse'>{user.status}</p>) : user.status == "completed" ?  ( <p className='bg-green-400 px-1 rounded-full text-white'>{user.status}</p>) :  ( <p className='bg-red-400 px-1 rounded-full text-white'>{user.status}</p>)}
-                </td>
-            
-                <td class="px-6 py-2">{new Date(user.date).toLocaleDateString()}</td>
-                <td class="px-6 py-2" onClick={() => handleDelete2(user._id)}><SlTrash className='text-red-800'/></td>
-               
-               
-        
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      </div>
-      </div>
-        </div>  
-
-        </div>
 
 
-
-{/* employee + tasks table */}
-<div className='flex gap-x-6  md:flex-row flex-col gap-y-6'>
-
-<div className="flex mt-16 ">
-            <div className='bg-white p-2'>
+      
+        <div className='bg-white p-2'>
             <p className='font-bold text-lg'>Staff</p>
             <div class="max-h-60 overflow-y-auto">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5 table-auto">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr >
           <th scope="col" className="px-6 py-3 font-light ">
@@ -406,8 +341,16 @@ const Body = () => {
         </tbody>
       </table>
       </div>
-      </div>
-        </div> 
+      </div> 
+
+        </div>
+         {/* </div>  */}
+
+
+
+{/* employee + tasks table */}
+
+
 
 
 
@@ -420,7 +363,7 @@ const Body = () => {
             <div className='bg-white p-2'>
             <p className='font-bold text-lg'>Scehduled Tasks</p>
             <div class="max-h-60 overflow-y-auto">
-            <table class=" w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5 ">
+            <table class=" w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5 table-auto">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr >
           <th scope="col" class="px-6 py-3 font-light ">
@@ -429,9 +372,14 @@ const Body = () => {
             <th scope="col" class="px-6 py-3 font-light">
               client
             </th>
-          
             <th scope="col" class="px-6 py-3 font-light">
               work
+            </th>
+            <th scope="col" class="px-6 py-3 font-light">
+              amount
+            </th>
+            <th scope="col" class="px-6 py-3 font-light">
+              pay date
             </th>
        
             <th scope="col" class="px-6 py-3 font-light">
@@ -443,6 +391,9 @@ const Body = () => {
             </th>
             <th scope="col" class="px-6 py-3 font-light ">
               priority
+            </th>
+            <th scope="col" class="px-6 py-3 font-light">
+              edit
             </th>
             <th scope="col" class="px-6 py-3 font-light">
               delete
@@ -474,13 +425,16 @@ const Body = () => {
                 <td class="px-6 py-2">{user.client}</td>
 
                 <td class="px-6 py-2">{user.work}</td>
-                <td class="px-6 py-2">{new Date(user.date).toDateString()}</td>
+                <td class="px-6 py-2">{user.amount}</td>
+                <td class="px-6 py-2">{new Date(user.date).toLocaleDateString()}</td>
+                <td class="px-6 py-2">{new Date(user.dueDate).toLocaleDateString()}</td>
                 <td class="px-6 py-4">
                 {user.status == "pending" ?  ( <p className='bg-yellow-400 flex justify-center rounded-full text-white animate-pulse'>{user.status}</p>) : user.status == "completed" ?  ( <p className='bg-green-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.status}</p>) : ( <p className='bg-red-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.status}</p>)}
                 </td>
                 <td class="px-6 py-4">
                 {user.priority == "high" ?  ( <p className='bg-red-400 flex justify-center rounded-full text-white animate-pulse'>{user.priority}</p>) : user.priority == "medium" ?  ( <p className='bg-yellow-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.priority}</p>) : ( <p className='bg-green-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.status}</p>)}
                 </td>
+                <Link to={`/edittask/${user._id}`}><td class="px-6 py-2"><SlPencil className='mt-3' /></td></Link>
                 <td class="px-6 py-2" onClick={() => handleDelete4(user._id)}><SlTrash className='text-red-800'/></td>
              
               </tr>
@@ -495,7 +449,7 @@ const Body = () => {
 </div>
 
 
-    </div>
+    // </div>
   )
 }
 

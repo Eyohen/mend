@@ -40,10 +40,13 @@ const statuses = [
 const TaskBody = () => {
   const navigate = useNavigate()
   const [startDate, setStartDate] = useState(new Date());
+  const [startDate2, setStartDate2] = useState(new Date());
     const [selectedStatus, setSelectedStatus] = useState([])
     const [date, setDate] = useState(new Date())
+    const [date2, setDate2] = useState(new Date())
     const [client,setClient]=useState("")
     const [work,setWork]=useState("")
+    const [amount,setAmount]=useState("")
     const [selectedPriority,setSelectedPriority]=useState([])
     // const [password,setPassword]=useState("")
     const [error,setError]=useState(false)
@@ -68,7 +71,7 @@ const TaskBody = () => {
             console.error('Access token not found')
           }
 
-          const res = await axios.post(URL+"/api/tasks/create",{client,work,date:startDate,status:selectedStatus,priority:selectedPriority}, {
+          const res = await axios.post(URL+"/api/tasks/create",{client,work,date:startDate, dueDate:startDate2,status:selectedStatus,priority:selectedPriority,amount}, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             }
@@ -76,6 +79,7 @@ const TaskBody = () => {
           setClient(res.data.client)
           setWork(res.data.work)
           setDate(res.data.date)
+          setDate2(res.data.dueDate)
 
           
           setError(false)
@@ -98,9 +102,10 @@ const TaskBody = () => {
         {isLoading ? (<p className="text-2xl">Loading...</p>) : ( <div className="flex flex-col gap-y-6">
         <p className="text-2xl text-center">Task</p>
           <input onChange={(e)=>setClient(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="Client Name" />
-          <input onChange={(e)=>setWork(e.target.value)} className="border border-black px-2 py-1" placeholder="Work" />
-
-          <p className='text-md text-gray-600'>Enter Due Date: <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className='border border-black py-1 ' placeholder='Enter Due Date' /></p>
+          <input onChange={(e)=>setWork(e.target.value)} className="border border-black px-2 py-1" placeholder="Work " />
+          <input onChange={(e)=>setAmount(e.target.value)} className="border border-black px-2 py-1" placeholder="Amount " />
+          <p className='text-md text-gray-600'>Enter payment Date: <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className='border border-black py-1 ' /></p>
+          <p className='text-md text-gray-600'>Enter Due Date: <DatePicker selected={startDate2} onChange={(date) => setStartDate2(date)} className='border border-black py-1 ' placeholder='Enter Due Date' /></p>
           <select value={selectedStatus} onChange={handleStatus} className="border border-black px-2 py-1">
             <option value="">Select Status:</option>
             {statuses.map(item => (
