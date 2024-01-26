@@ -91,7 +91,7 @@ const ReceiptBody = () => {
       <div className="items-center h-[100vh] justify-center flex w-full">
         {isLoading ? (<p className="text-2xl">Loading...</p>) : ( <div className="flex flex-col gap-y-6">
         <p className="text-2xl text-center">Receipt</p>
-          <input onChange={(e)=>setEmail(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="Client Correct Email" />
+          <input onChange={(e)=>setEmail(e.target.value)} className="border border-black px-2 py-1 w-full md:w-[500px]" placeholder="Client Correct Email" />
           <input onChange={(e)=>setCustomer(e.target.value)} className="border border-black px-2 py-1" placeholder="Customer Name" />
           <input onChange={(e)=>setPrice(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="Price" />
           <select value={selectedMedium} onChange={handleMedium} className="border border-black px-2 py-1">

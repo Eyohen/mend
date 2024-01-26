@@ -126,7 +126,7 @@ const EditTask = () => {
     <div className="items-center h-[100vh] justify-center flex w-full">
       {isLoading ? (<p className="text-2xl">Loading...</p>) : ( <div className="flex flex-col gap-y-6">
       <p className="text-2xl text-center">Update Task</p>
-        <input onChange={(e)=>setClient(e.target.value)} value={client} className="border border-black px-2 py-1 w-[500px]" placeholder="Client Name" />
+        <input onChange={(e)=>setClient(e.target.value)} value={client} className="border border-black px-2 py-1 w-full md:w-[500px]" placeholder="Client Name" />
         <input onChange={(e)=>setWork(e.target.value)} value={work} className="border border-black px-2 py-1" placeholder="Work" />
         <input onChange={(e)=>setAmount(e.target.value)} value={amount} className="border border-black px-2 py-1" placeholder="Amount" />
 

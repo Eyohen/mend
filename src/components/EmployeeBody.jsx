@@ -62,7 +62,7 @@ const EmployeeBody = () => {
       <div className="items-center h-[100vh] justify-center flex w-full">
         {isLoading ? (<p className="text-2xl">Loading...</p>) : ( <div className="flex flex-col gap-y-6">
         <p className="text-2xl text-center">Employee</p>
-          <input onChange={(e)=>setFirstName(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="Employee First Name" />
+          <input onChange={(e)=>setFirstName(e.target.value)} className="border border-black px-2 py-1 w-full md:w-[500px]" placeholder="Employee First Name" />
           <input onChange={(e)=>setLastName(e.target.value)} className="border border-black px-2 py-1" placeholder="Employee Last Name" />
           <input onChange={(e)=>setEmail(e.target.value)} className="border border-black px-2 py-1" placeholder="Employee Email" />
           <input onChange={(e)=>setJob(e.target.value)} className="border border-black px-2 py-1" placeholder="Employee title" />

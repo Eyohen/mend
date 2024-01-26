@@ -39,15 +39,15 @@ const handleSubmit = async() => {
 }
 
   return (
-    <div className='bg-gray-300 '>
+    <div className='bg-gray-300 p-6'>
       <p className='px-6 text-2xl'>MEND</p>
  
  <div className=''>
       {isLoading ? (<p className='text-2xl'>Loading...</p>) : ( <div className='flex flex-col gap-y-6 items-center justify-center h-[100vh]'>
         <p className='text-2xl'>LOGIN</p>
-      <input placeholder='Enter Email' onChange={(e) => setEmail(e.target.value)} className='px-2 w-[500px] border border-black py-2'/>
+      <input placeholder='Enter Email' onChange={(e) => setEmail(e.target.value)} className='px-2 w-full md:w-[500px] border border-black py-2'/>
 
-      <input placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)} className='px-2 w-[500px] border border-black py-2' />
+      <input placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)} className='px-2 w-full  md:w-[500px] border border-black py-2' />
 
       <button onClick={handleSubmit} className='bg-black text-white px-9 py-1'>Submit</button>
       {error && <h3 className='text-red-500 text-lg'>Something went wrong</h3>}

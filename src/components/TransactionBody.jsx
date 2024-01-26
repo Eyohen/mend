@@ -82,7 +82,7 @@ const TransactionBody = () => {
       <div className="items-center h-[100vh] justify-center flex w-full">
         {isLoading ? (<p className="text-2xl">Loading...</p>) : ( <div className="flex flex-col gap-y-6">
         <p className="text-2xl text-center">Transactions</p>
-          <input onChange={(e)=>setName(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="Client Name" />
+          <input onChange={(e)=>setName(e.target.value)} className="border border-black px-2 py-1 w-full md:w-[500px]" placeholder="Client Name" />
           <input onChange={(e)=>setAmount(e.target.value)} className="border border-black px-2 py-1" placeholder="Enter Amount" />
 
           <p className='text-md text-gray-600'>Enter Due Date: <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className='border border-black py-1 ' placeholder='Enter Due Date' /></p>

@@ -101,7 +101,7 @@ const TaskBody = () => {
       <div className="items-center h-[100vh] justify-center flex w-full">
         {isLoading ? (<p className="text-2xl">Loading...</p>) : ( <div className="flex flex-col gap-y-6">
         <p className="text-2xl text-center">Task</p>
-          <input onChange={(e)=>setClient(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="Client Name" />
+          <input onChange={(e)=>setClient(e.target.value)} className="border border-black px-2 py-1 w-full md:w-[500px]" placeholder="Client Name" />
           <input onChange={(e)=>setWork(e.target.value)} className="border border-black px-2 py-1" placeholder="Work " />
           <input onChange={(e)=>setAmount(e.target.value)} className="border border-black px-2 py-1" placeholder="Amount " />
           <p className='text-md text-gray-600'>Enter payment Date: <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className='border border-black py-1 ' /></p>
