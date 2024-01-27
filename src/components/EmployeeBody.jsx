@@ -37,7 +37,19 @@ const EmployeeBody = () => {
       const handleRegister = async ()=>{
         setIsLoading(true)
         try{
-          const res = await axios.post(URL+"/api/auth/register",{firstName,lastName,email,password,role:selectedRole,job})
+          const accessToken = localStorage.getItem("access_token");
+
+          if(!accessToken){
+                // Handle the case where the access token is not available
+            console.error('Access token not found')
+          }
+
+          const res = await axios.post(URL+"/api/auth/register",{firstName,lastName,email,password,role:selectedRole,job}, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            }
+          }
+)
           setFirstName(res.data.firstName)
           setLastName(res.data.lastName)
           setEmail(res.data.email)
