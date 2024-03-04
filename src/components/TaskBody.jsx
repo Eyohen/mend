@@ -37,6 +37,22 @@ const statuses = [
     },
       ]
 
+      const pickupstatus = [
+        {
+            _id: 1,
+            pickupstatus: "not-ready",
+        },
+        {
+            _id: 2,
+            pickupstatus: "ready",
+        },
+        {
+          _id: 3,
+          pickupstatus: "picked-up",
+      },
+        ]
+  
+
 const TaskBody = () => {
   const navigate = useNavigate()
   const [startDate, setStartDate] = useState(new Date());
@@ -47,7 +63,10 @@ const TaskBody = () => {
     const [client,setClient]=useState("")
     const [work,setWork]=useState("")
     const [amount,setAmount]=useState("")
+    const [tailor,setTailor]=useState("")
+    const [customerphone,setCustomerPhone]=useState("")
     const [selectedPriority,setSelectedPriority]=useState([])
+    const [selectedPickup,setSelectedPickup]=useState([])
     // const [password,setPassword]=useState("")
     const [error,setError]=useState(false)
     const [isLoading,setIsLoading]=useState(false)
@@ -60,6 +79,9 @@ const TaskBody = () => {
         setSelectedPriority(e.target.value);
       };
 
+      const handlePickup = (e) => {
+        setSelectedPickup(e.target.value);
+      };
 
       const handleTask = async ()=>{
         setIsLoading(true)
@@ -71,7 +93,7 @@ const TaskBody = () => {
             console.error('Access token not found')
           }
 
-          const res = await axios.post(URL+"/api/tasks/create",{client,work,date:startDate, dueDate:startDate2,status:selectedStatus,priority:selectedPriority,amount}, {
+          const res = await axios.post(URL+"/api/tasks/create",{client,work,date:startDate, dueDate:startDate2,status:selectedStatus,priority:selectedPriority,amount,customerphone,pickupstatus:selectedPickup,tailor}, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             }
@@ -119,6 +141,16 @@ const TaskBody = () => {
               <option key={item._id} value={item.priority}>{item.priority}</option>
             ) )}
           </select>
+
+          <select value={selectedPickup} onChange={handlePickup} className="border border-black px-2 py-1">
+            <option value="">Select Pickup status:</option>
+            {pickupstatus.map(item => (
+              <option key={item._id} value={item.pickupstatus}>{item.pickupstatus}</option>
+            ) )}
+          </select>
+
+          <input onChange={(e)=>setTailor(e.target.value)} className="border border-black px-2 py-1" placeholder="Tailor in charge" />
+          <input onChange={(e)=>setCustomerPhone(e.target.value)} className="border border-black px-2 py-1 " placeholder="Customers phone number " />
 
 <button onClick={handleTask} className="bg-black text-white py-1">Create Task</button>
 {error && <h3 className="text-red-500 text-md ">Something went wrong</h3>}

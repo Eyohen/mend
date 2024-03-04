@@ -7,7 +7,7 @@ const Receipt = () => {
   return (
     <div>
           <AdminNav/>
-        <div className='flex bg-gray-300'>
+        <div className='flex bg-gray-200'>
         <SideBar/>
         <ReceiptBody/>
         </div>
@@ -16,3 +16,4 @@ const Receipt = () => {
 }
 
 export default Receipt
+

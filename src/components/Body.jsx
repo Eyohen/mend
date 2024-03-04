@@ -392,6 +392,15 @@ const Body = () => {
             <th scope="col" class="px-6 py-3 font-light ">
               priority
             </th>
+            <th scope="col" class="px-6 py-3 font-light ">
+              tailor
+            </th>
+            <th scope="col" class="px-6 py-3 font-light ">
+              phone no.
+            </th>
+            <th scope="col" class="px-6 py-3 font-light ">
+              pickup status
+            </th>
             <th scope="col" class="px-6 py-3 font-light">
               edit
             </th>
@@ -432,8 +441,13 @@ const Body = () => {
                 {user.status == "pending" ?  ( <p className='bg-yellow-400 flex justify-center rounded-full text-white animate-pulse'>{user.status}</p>) : user.status == "completed" ?  ( <p className='bg-green-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.status}</p>) : ( <p className='bg-red-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.status}</p>)}
                 </td>
                 <td class="px-6 py-4">
-                {user.priority == "high" ?  ( <p className='bg-red-400 flex justify-center rounded-full text-white animate-pulse'>{user.priority}</p>) : user.priority == "medium" ?  ( <p className='bg-yellow-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.priority}</p>) : ( <p className='bg-green-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.status}</p>)}
-                </td>
+                {user.priority == "high" ?  ( <p className='bg-red-400 flex justify-center rounded-full text-white animate-pulse'>{user.priority}</p>) : user.priority == "medium" ?  ( <p className='bg-yellow-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.priority}</p>) : ( <p className='bg-green-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.priority}</p>)}
+                </td>            
+                <td class="px-6 py-2">{user.tailor}</td>
+                <td class="px-6 py-2">{user.customerphone}</td>
+                <td class="px-6 py-4">
+                {user.pickupstatus == "not-ready" ?  ( <p className='bg-red-400 flex justify-center rounded-full text-white animate-pulse'>{user.pickupstatus}</p>) : user.pickupstatus == "ready" ?  ( <p className='bg-yellow-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.pickupstatus}</p>) : ( <p className='bg-green-400 flex justify-center rounded-full px-1 animate-pulse text-white'>{user.pickupstatus}</p>)}
+                </td>            
                 <Link to={`/edittask/${user._id}`}><td class="px-6 py-2"><SlPencil className='mt-3' /></td></Link>
                 <td class="px-6 py-2" onClick={() => handleDelete4(user._id)}><SlTrash className='text-red-800'/></td>
              

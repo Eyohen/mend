@@ -89,25 +89,31 @@ const ReceiptBody = () => {
   return (
     <div className="w-full">
     
-      <div className="items-center h-[100vh] justify-center flex w-full">
+      <div className="items-center h-[100vh] justify-center flex w-full ">
         {isLoading ? (<p className="text-2xl">Loading...</p>) : ( <div className="flex flex-col gap-y-6">
         <p className="text-2xl text-center">Receipt</p>
           <input onChange={(e)=>setEmail(e.target.value)} className="border border-black px-2 py-1 w-full md:w-[500px]" placeholder="Client Correct Email" />
           <input onChange={(e)=>setCustomer(e.target.value)} className="border border-black px-2 py-1" placeholder="Customer Name" />
-          <input onChange={(e)=>setPrice(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="Price" />
+          <input onChange={(e)=>setPrice(e.target.value)} className="border border-black px-2 py-1 " placeholder="Price" />
           <select value={selectedMedium} onChange={handleMedium} className="border border-black px-2 py-1">
             <option value="">Select payment medium:</option>
             {media.map(item => (
               <option key={item._id} value={item.medium}>{item.medium}</option>
             ) )}
           </select>
-          <input onChange={(e)=>setSewing(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="sewing ?..." />
-          <input onChange={(e)=>setAlteration(e.target.value)} className="border border-black px-2 py-1 w-[500px]" placeholder="alterations ? ..." />
+          <input onChange={(e)=>setSewing(e.target.value)} className="border border-black px-2 py-1 " placeholder="sewing ?..." />
+          <input onChange={(e)=>setAlteration(e.target.value)} className="border border-black px-2 py-1 " placeholder="alterations ? ..." />
           <input onChange={(e)=>setAdvanced(e.target.value)} className="border border-black px-2 py-1" placeholder="Enter advanced paid" />
          
-          <p className='text-md text-gray-600'>Enter Date of Payment: <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className='border border-black py-1 '  /></p>
-          <p className='text-md text-gray-600'>Enter Pick up Date: <DatePicker selected={startDate2} onChange={(date) => setStartDate2(date)} className='border border-black py-1 '  /></p>
-       
+          <div>
+          <p className='text-md text-gray-600'>Enter Date of Payment: </p>
+          <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className='border border-black py-1 '  />
+          </div>
+
+          <div>
+          <p className='text-md text-gray-600'>Enter Pick up Date:</p>
+           <DatePicker selected={startDate2} onChange={(date) => setStartDate2(date)} className='border border-black py-1 '  />
+           </div>
 
        
 <button onClick={handleReceipt} className="bg-black text-white py-1">Create receipt</button>
