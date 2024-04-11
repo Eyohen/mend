@@ -51,6 +51,61 @@ const statuses = [
           pickupstatus: "picked-up",
       },
         ]
+
+        const picktimes = [
+          {
+            _id: 1,
+           picktime: "7:00am",
+            },
+            {
+                _id: 2,
+               picktime: "8:00am",
+            },
+            {
+                _id: 3,
+               picktime: "9:00am",
+            },
+            {
+              _id: 4,
+             picktime: "10:00am",
+              },
+              {
+                  _id: 5,
+                 picktime: "11:00am",
+              },
+              {
+                  _id: 6,
+                 picktime: "12:00pm",
+              },
+              {
+                _id: 7,
+               picktime: "1:00pm",
+                },
+                {
+                    _id: 8,
+                   picktime: "2:00pm",
+                },
+                {
+                    _id: 9,
+                   picktime: "3:00pm",
+                },
+                {
+                  _id: 10,
+                 picktime: "4:00pm",
+                  },
+                  {
+                      _id: 11,
+                     picktime: "5:00pm",
+                  },
+                  {
+                      _id: 12,
+                     picktime: "6:00pm",
+                  },
+                  {
+                    _id: 13,
+                   picktime: "7:00pm",
+                },
+            ]
   
 
 const TaskBody = () => {
@@ -70,6 +125,7 @@ const TaskBody = () => {
     // const [password,setPassword]=useState("")
     const [error,setError]=useState(false)
     const [isLoading,setIsLoading]=useState(false)
+    const [selectedPickTime, setSelectedPickTime] = useState([])
 
     const handleStatus = (e) => {
         setSelectedStatus(e.target.value);
@@ -77,6 +133,10 @@ const TaskBody = () => {
 
       const handlePriority = (e) => {
         setSelectedPriority(e.target.value);
+      };
+
+      const handlePickTime = (e) => {
+        setSelectedPickTime(e.target.value);
       };
 
       const handlePickup = (e) => {
@@ -93,7 +153,7 @@ const TaskBody = () => {
             console.error('Access token not found')
           }
 
-          const res = await axios.post(URL+"/api/tasks/create",{client,work,date:startDate, dueDate:startDate2,status:selectedStatus,priority:selectedPriority,amount,customerphone,pickupstatus:selectedPickup,tailor}, {
+          const res = await axios.post(URL+"/api/tasks/create",{client,work,date:startDate, dueDate:startDate2,status:selectedStatus,priority:selectedPriority,amount,customerphone,pickupstatus:selectedPickup,tailor, picktime:selectedPickTime}, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             }
@@ -148,6 +208,14 @@ const TaskBody = () => {
               <option key={item._id} value={item.pickupstatus}>{item.pickupstatus}</option>
             ) )}
           </select>
+
+          <select value={selectedPickTime} onChange={handlePickTime} className="border border-black px-2 py-1">
+            <option value="">Select pickup time:</option>
+            {picktimes.map(item => (
+              <option key={item._id} value={item.picktime}>{item.picktime}</option>
+            ) )}
+          </select>
+
 
           <input onChange={(e)=>setTailor(e.target.value)} className="border border-black px-2 py-1" placeholder="Tailor in charge" />
           <input onChange={(e)=>setCustomerPhone(e.target.value)} className="border border-black px-2 py-1 " placeholder="Customers phone number " />

@@ -37,6 +37,62 @@ const statuses = [
     },
       ]
 
+
+      const picktimes = [
+        {
+          _id: 1,
+         picktime: "7:00am",
+          },
+          {
+              _id: 2,
+             picktime: "8:00am",
+          },
+          {
+              _id: 3,
+             picktime: "9:00am",
+          },
+          {
+            _id: 4,
+           picktime: "10:00am",
+            },
+            {
+                _id: 5,
+               picktime: "11:00am",
+            },
+            {
+                _id: 6,
+               picktime: "12:00pm",
+            },
+            {
+              _id: 7,
+             picktime: "1:00pm",
+              },
+              {
+                  _id: 8,
+                 picktime: "2:00pm",
+              },
+              {
+                  _id: 9,
+                 picktime: "3:00pm",
+              },
+              {
+                _id: 10,
+               picktime: "4:00pm",
+                },
+                {
+                    _id: 11,
+                   picktime: "5:00pm",
+                },
+                {
+                    _id: 12,
+                   picktime: "6:00pm",
+                },
+                {
+                  _id: 13,
+                 picktime: "7:00pm",
+              },
+          ]
+
 const EditTask = () => {
   const taskId = useParams().id
   const navigate=useNavigate()
