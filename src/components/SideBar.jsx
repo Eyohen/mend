@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 
 const SideBar = () => {
   return (
-    <div className='border-2 px-20 h-[100vh] shadow-md bg-white hidden md:block '>
+    <div className='fixed top-0 left-0 bottom-0 border-2 px-3 h-[100vh] shadow-md bg-white hidden md:block '>
         
         <div className='flex flex-col gap-y-6 mt-16 items-center'>
         <Link to={'/dashboard'}><p className='hover:bg-gray-300 rounded-md px-12 py-1 text-lg'>Dashboard</p></Link>
